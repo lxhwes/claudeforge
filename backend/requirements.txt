@@ -1,0 +1,41 @@
+# ClaudeForge Backend Dependencies
+
+# Web Framework
+fastapi[all]==0.115.9
+uvicorn[standard]==0.32.0
+websockets==12.0
+python-multipart==0.0.18
+
+# Anthropic SDK
+anthropic==0.39.0
+
+# CrewAI for Agent Orchestration
+crewai==0.86.0
+
+# Data Validation
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# CLI
+typer[all]==0.15.1
+rich==13.7.0
+
+# YAML Processing
+pyyaml==6.0.1
+
+# Async Support
+anyio==4.3.0
+asyncio-throttle==1.0.2
+
+# Date/Time
+python-dateutil==2.8.2
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.25.2
+pytest-cov==6.0.0
+httpx==0.28.1
+
+# Development
+python-dotenv==1.0.0
+setuptools==75.8.0
