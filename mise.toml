@@ -1,0 +1,21 @@
+# Uncomment and configure tools as needed for your project
+# [tools]
+# python = "3.12"
+# node = "22"
+# go = "1.23"
+
+[tasks.test]
+description = "Run tests"
+run = "echo 'Configure test command for your project'"
+
+[tasks.lint]
+description = "Run linter"
+run = "echo 'Configure lint command for your project'"
+
+[tasks.fmt]
+description = "Format code"
+run = "echo 'Configure format command for your project'"
+
+[tasks.check]
+description = "Run lint and test"
+depends = ["lint", "test"]
