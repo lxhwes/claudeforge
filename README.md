@@ -1,67 +1,51 @@
-# Project Name
+# ClaudeForge
 
-<!-- Brief description of your project -->
+Docker-based, spec-driven AI agent framework for software development workflows. Uses CrewAI with Claude models to implement a six-phase autonomous workflow with human oversight.
 
 ## Features
 
-- Feature 1
-- Feature 2
+- Six-phase workflow: Requirements → Design → Tasks → Implementation → Verification → Review
+- Real-time dashboard with WebSocket log streaming
+- Manual approval gates or fully autonomous mode
+- CrewAI agents with specialized roles and tools
 
 ## Prerequisites
 
-<!-- List required tools/dependencies -->
+- Docker and Docker Compose
+- Anthropic API key
 
-## Installation
+## Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/username/repo.git
-cd repo
+# Copy environment template and add your API key
+cp .env.example .env
 
-# Install dependencies
-# ...
+# Build and start
+./start.sh --build
+
+# Access dashboard at http://localhost:5050
+# API at http://localhost:8000
 ```
 
 ## Usage
 
 ```bash
-# Example usage
+# Inside agent container
+claudeforge start myproject "Add user authentication"
+claudeforge status
+claudeforge approve FEAT-20260130-001 requirements
 ```
 
 ## Development
 
 ```bash
-# Run tests
-mise run test
+# Run backend tests
+docker-compose exec agent pytest
 
-# Run linter
-mise run lint
-
-# Format code
-mise run fmt
-
-# Run all checks
-mise run check
+# Run frontend checks
+docker-compose exec dashboard npm run check
 ```
-
-## Project Structure
-
-```
-.
-├── README.md
-├── CLAUDE.md
-├── mise.toml
-└── ...
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feat/amazing-feature`)
-3. Commit your changes using conventional commits
-4. Push to the branch (`git push origin feat/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
-<!-- Add your license here -->
+MIT
