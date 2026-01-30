@@ -1,0 +1,37 @@
+{
+  "orchestrator": {
+    "model": "claude-3-opus-20240229",
+    "role": "Workflow Orchestrator",
+    "description": "Coordinates the spec-driven development workflow"
+  },
+  "requirements_analyst": {
+    "model": "claude-3-5-sonnet-20241022",
+    "role": "Requirements Analyst",
+    "description": "Gathers and clarifies requirements"
+  },
+  "architect": {
+    "model": "claude-3-5-sonnet-20241022",
+    "role": "Software Architect",
+    "description": "Creates technical designs and architecture"
+  },
+  "task_planner": {
+    "model": "claude-3-5-sonnet-20241022",
+    "role": "Task Planner",
+    "description": "Breaks down designs into implementation tasks"
+  },
+  "developer": {
+    "model": "claude-3-5-sonnet-20241022",
+    "role": "Software Developer",
+    "description": "Implements features and writes code"
+  },
+  "qa_engineer": {
+    "model": "claude-3-5-sonnet-20241022",
+    "role": "QA Engineer",
+    "description": "Verifies implementations through testing"
+  },
+  "reviewer": {
+    "model": "claude-3-haiku-20240307",
+    "role": "Code Reviewer",
+    "description": "Reviews code for quality and best practices"
+  }
+}
