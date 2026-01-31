@@ -1,21 +1,69 @@
-# Uncomment and configure tools as needed for your project
-# [tools]
-# python = "3.12"
-# node = "22"
-# go = "1.23"
+# ClaudeForge Development Tools Configuration
+[tools]
+python = "3.12"  # Backend Python version (matches Dockerfile)
+node = "22"      # Frontend Node.js version
 
+# Backend tasks
 [tasks.test]
-description = "Run tests"
-run = "echo 'Configure test command for your project'"
+description = "Run backend tests with pytest"
+run = "docker-compose exec agent pytest"
 
+[tasks."test:cov"]
+description = "Run backend tests with coverage"
+run = "docker-compose exec agent pytest --cov=. --cov-report=html"
+
+[tasks."test:frontend"]
+description = "Run frontend tests"
+run = "docker-compose exec dashboard npm test"
+
+# Linting tasks
 [tasks.lint]
-description = "Run linter"
-run = "echo 'Configure lint command for your project'"
+description = "Run frontend linter"
+run = "docker-compose exec dashboard npm run lint"
 
-[tasks.fmt]
-description = "Format code"
-run = "echo 'Configure format command for your project'"
+[tasks."lint:check"]
+description = "Run Svelte type checking"
+run = "docker-compose exec dashboard npm run check"
+
+# Build and deployment
+[tasks.build]
+description = "Build Docker containers"
+run = "./start.sh --build"
+
+[tasks.start]
+description = "Start the application"
+run = "./start.sh"
+
+[tasks.stop]
+description = "Stop the application"
+run = "./start.sh --stop"
+
+[tasks.restart]
+description = "Restart the application"
+run = "./start.sh --restart"
+
+[tasks.logs]
+description = "View application logs"
+run = "./start.sh --logs"
+
+[tasks.shell]
+description = "Open shell in agent container"
+run = "./start.sh --shell"
+
+# Development tasks
+[tasks."dev:frontend"]
+description = "Run frontend dev server locally (requires Node 22)"
+run = "cd frontend && npm run dev"
+
+[tasks."dev:install"]
+description = "Install frontend dependencies locally"
+run = "cd frontend && npm install"
+
+# Verification and health
+[tasks.verify]
+description = "Verify system health"
+run = "docker-compose exec agent claudeforge verify"
 
 [tasks.check]
-description = "Run lint and test"
-depends = ["lint", "test"]
+description = "Run all checks (tests and lint)"
+depends = ["test", "test:frontend", "lint"]
